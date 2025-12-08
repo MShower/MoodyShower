@@ -1,0 +1,42 @@
+{
+	"schemaVersion": 1,
+	"id": "moody-shower",
+	"version": "${version}",
+	"name": "Moody Shower",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"MeteorOfTime",
+		"Falling_Sakura"
+	],
+	"contact": {
+		"homepage": "https://github.com/MShower/MoodyShower/",
+		"sources": "https://github.com/MShower/MoodyShower/"
+	},
+	"license": "MIT",
+	"icon": "assets/moody-shower/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"mshower.moody.MoodyShower"
+		],
+		"client": [
+			"mshower.moody.MoodyShowerClient"
+		],
+		"fabric-datagen": [
+			"mshower.moody.MoodyShowerDataGenerator"
+		]
+	},
+	"mixins": [
+		"moody-shower.mixins.json",
+		{
+			"config": "moody-shower.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.1",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
