@@ -1,0 +1,5 @@
+{
+  "moodyShower.config.entry.forceControlChristmasChestRendering": "强制控制圣诞箱子渲染逻辑",
+  "moodyShower.config.entry.toggleChristmasChestRendering": "切换圣诞箱子显示",
+  "moodyShower.config.title": "Moody Shower 配置"
+}
