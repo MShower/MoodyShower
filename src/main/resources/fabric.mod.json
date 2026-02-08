@@ -3,17 +3,28 @@
     "id": "moody-shower",
     "version": "${version}",
     "name": "Moody Shower",
-    "description": "Trash Vision",
+    "description": "Just a client-side gameplay enhancing mod.",
     "authors": [
-        "MeteorOfTime"
+        "MeteorOfTime",
+        "Falling_Sakura"
     ],
     "contact": {
-        "homepage": "https://fabricmc.net/",
-        "sources": "https://github.com/FabricMC/fabric-example-mod"
+        "homepage": "https://github.com/MShower/MoodyShower",
+        "sources": "https://github.com/MShower/MoodyShower"
+    },
+    "custom": {
+        "modmenu": {
+            "links": {
+                "modmenu.wiki": "https://github.com/MShower/MoodyShower/wiki",
+                "modmenu.modrinth": "https://modrinth.com/project/moodyshower",
+                "modmenu.issues": "https://github.com/MShower/MoodyShower/issues"
+            },
+            "update_checker": true
+        }
     },
     "license": "MIT",
     "icon": "assets/moody-shower/icon.png",
-    "environment": "*",
+    "environment": "client",
     "entrypoints": {
         "main": [
             "mshower.moody.MoodyShower"
