@@ -18,6 +18,7 @@ public class MoodyShowerEnUsProvider extends FabricLanguageProvider {
     public void generateTranslations(TranslationBuilder translationBuilder) {
         translationBuilder.add("moodyShower.config.title", "Moody Shower Config");
         translationBuilder.add(fieldName("forceControlChristmasChestRendering"), "Force Control Christmas Chest Rendering");
-        translationBuilder.add(fieldName("toggleChristmasChestRendering"), "Toggle Christmas Chest Rendering");
+        translationBuilder.add(fieldName("toggleChristmasChestRendering"), "Toggle Christmas Chest Rendering Override");
+        translationBuilder.add(fieldName("toggleJsonCustomItemGroups"), "Enable JSON Custom Item Groups (NEED RESTART MINECRAFT)");
     }
 }

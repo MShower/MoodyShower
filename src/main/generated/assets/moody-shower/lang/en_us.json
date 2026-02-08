@@ -1,5 +1,6 @@
 {
   "moodyShower.config.entry.forceControlChristmasChestRendering": "Force Control Christmas Chest Rendering",
-  "moodyShower.config.entry.toggleChristmasChestRendering": "Toggle Christmas Chest Rendering",
+  "moodyShower.config.entry.toggleChristmasChestRendering": "Toggle Christmas Chest Rendering Override",
+  "moodyShower.config.entry.toggleJsonCustomItemGroups": "Enable JSON Custom Item Groups (NEED RESTART MINECRAFT)",
   "moodyShower.config.title": "Moody Shower Config"
 }

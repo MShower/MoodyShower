@@ -5,30 +5,31 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonWriter;
-import mshower.moody.MoodyShower;
 import net.fabricmc.loader.api.FabricLoader;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 
-public class Config {
-    private static final Logger LOGGER = LogManager.getLogger();
+import static mshower.moody.MoodyShower.MOD_ID;
+import static mshower.moody.MoodyShower.LOGGER;
 
+public class Config {
     private static final File CONFIG_FILE =
             FabricLoader.getInstance()
                     .getConfigDir()
-                    .resolve(MoodyShower.MOD_ID + ".json")
+                    .resolve(MOD_ID)
+                    .resolve(MOD_ID + ".json")
                     .toFile();
 
     public final boolean forceControlChristmasChestRendering;
     public final boolean toggleChristmasChestRendering;
+    public final boolean toggleJsonCustomItemGroups;
 
-    public static final Config DEFAULT = new Config(false, false);
+    public static final Config DEFAULT = new Config(false, false, false);
 
-    public Config(boolean forceControlRenderChristmasChest, boolean toggleChristmasChestRendering) {
+    public Config(boolean forceControlRenderChristmasChest, boolean toggleChristmasChestRendering, boolean toggleJsonCustomItemGroups) {
         this.forceControlChristmasChestRendering = forceControlRenderChristmasChest;
         this.toggleChristmasChestRendering = toggleChristmasChestRendering;
+        this.toggleJsonCustomItemGroups = toggleJsonCustomItemGroups;
     }
 
     public static Config read() {
@@ -39,19 +40,15 @@ public class Config {
             JsonObject object = element.getAsJsonObject();
             return new Config(
                     readBool(object, "forceControlChristmasChestRendering", DEFAULT.forceControlChristmasChestRendering),
-                    readBool(object, "toggleChristmasChestRendering", DEFAULT.toggleChristmasChestRendering)
+                    readBool(object, "toggleChristmasChestRendering", DEFAULT.toggleChristmasChestRendering),
+                    readBool(object, "toggleJsonCustomItemGroups", DEFAULT.toggleJsonCustomItemGroups)
             );
         }
         catch (FileNotFoundException e) {
             return DEFAULT;
         }
         catch (IOException | JsonIOException e) {
-            LOGGER.error(
-                    ()->
-                    "[Moody Shower] Couldn't read "
-                            + CONFIG_FILE
-                            + ", using default settings instead",
-                    e);
+            LOGGER.error("Couldn't read {}, using default settings instead", CONFIG_FILE, e);
             return DEFAULT;
         }
     }
@@ -64,11 +61,11 @@ public class Config {
             if (el.isJsonPrimitive() && el.getAsJsonPrimitive().isBoolean()) {
                 return el.getAsBoolean();
             }
-            LOGGER.warn("[Moody Shower] Invalid boolean '{}' for option '{}'", el, key);
+            LOGGER.warn("Invalid boolean '{}' for option '{}'", el, key);
             return fallback;
 
         } catch (ClassCastException | IllegalStateException e) {
-            LOGGER.warn("[Moody Shower] Exception reading boolean '{}' for option '{}'", el, key, e);
+            LOGGER.warn("Exception reading boolean '{}' for option '{}'", el, key, e);
             return fallback;
         }
     }
@@ -81,14 +78,11 @@ public class Config {
                     .beginObject()
                     .name("forceControlChristmasChestRendering").value(forceControlChristmasChestRendering)
                     .name("toggleChristmasChestRendering").value(toggleChristmasChestRendering)
+                    .name("toggleJsonCustomItemGroups").value(toggleJsonCustomItemGroups)
                     .endObject();
         }
         catch (IOException e) {
-            LOGGER.error(
-                    ()->
-                            "[Moody Shower] Couldn't write settings to "
-                                    + CONFIG_FILE,
-                    e);
+            LOGGER.error("Couldn't write settings to {}", CONFIG_FILE, e);
         }
     }
 }

@@ -7,8 +7,8 @@ import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import me.shedaniel.clothconfig2.gui.entries.BooleanListEntry;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
-import static mshower.moody.config.Config.DEFAULT;
 
+import static mshower.moody.config.Config.DEFAULT;
 import static mshower.moody.MoodyShower.config;
 
 public class ConfigScreenFactoryImpl implements ConfigScreenFactory<Screen> {
@@ -34,7 +34,7 @@ public class ConfigScreenFactoryImpl implements ConfigScreenFactory<Screen> {
 
         private final ConfigEntryBuilder builder;
         private final ConfigCategory category;
-        private final BooleanListEntry forceRenderChristmasChest, toggleChristmasChestRendering;
+        private final BooleanListEntry forceRenderChristmasChest, toggleChristmasChestRendering, toggleJsonCustomItemGroups;
 
         public ConfigEntries(ConfigEntryBuilder builder, ConfigCategory category) {
             this.builder = builder;
@@ -42,6 +42,7 @@ public class ConfigScreenFactoryImpl implements ConfigScreenFactory<Screen> {
 
             forceRenderChristmasChest = createBoolField("forceControlChristmasChestRendering", config.forceControlChristmasChestRendering, DEFAULT.forceControlChristmasChestRendering);
             toggleChristmasChestRendering = createBoolField("toggleChristmasChestRendering", config.toggleChristmasChestRendering, DEFAULT.toggleChristmasChestRendering);
+            toggleJsonCustomItemGroups = createBoolField("toggleJsonCustomItemGroups", config.toggleJsonCustomItemGroups, DEFAULT.toggleJsonCustomItemGroups);
         }
 
         private BooleanListEntry createBoolField(String id, boolean value, boolean defaultValue) {
@@ -56,7 +57,8 @@ public class ConfigScreenFactoryImpl implements ConfigScreenFactory<Screen> {
         public Config createConfig() {
             return new Config(
                     forceRenderChristmasChest.getValue(),
-                    toggleChristmasChestRendering.getValue()
+                    toggleChristmasChestRendering.getValue(),
+                    toggleJsonCustomItemGroups.getValue()
             );
         }
     }

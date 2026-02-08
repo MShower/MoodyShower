@@ -18,6 +18,7 @@ public class MoodyShowerZhCnProvider extends FabricLanguageProvider {
     public void generateTranslations(TranslationBuilder translationBuilder) {
         translationBuilder.add("moodyShower.config.title", "Moody Shower 配置");
         translationBuilder.add(fieldName("forceControlChristmasChestRendering"), "强制控制圣诞箱子渲染逻辑");
-        translationBuilder.add(fieldName("toggleChristmasChestRendering"), "切换圣诞箱子显示");
+        translationBuilder.add(fieldName("toggleChristmasChestRendering"), "强制切换圣诞箱子显示");
+        translationBuilder.add(fieldName("toggleJsonCustomItemGroups"), "启用 JSON 自定义物品标签页（需要重启Minecraft）");
     }
 }
