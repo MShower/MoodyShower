@@ -1,6 +1,8 @@
 {
   "moodyShower.config.entry.forceControlChristmasChestRendering": "Force Control Christmas Chest Rendering",
+  "moodyShower.config.entry.toggleBedUseInTheEnd": "Prevent Bed Interaction in the End",
+  "moodyShower.config.entry.toggleBedUseInTheNether": "Prevent Bed Interaction in the Nether",
   "moodyShower.config.entry.toggleChristmasChestRendering": "Toggle Christmas Chest Rendering Override",
-  "moodyShower.config.entry.toggleJsonCustomItemGroups": "Enable JSON Custom Item Groups (NEED RESTART MINECRAFT)",
+  "moodyShower.config.entry.toggleJsonCustomItemGroups": "Toggle JSON Custom Item Groups (NEED RESTART MINECRAFT)",
   "moodyShower.config.title": "Moody Shower Config"
 }

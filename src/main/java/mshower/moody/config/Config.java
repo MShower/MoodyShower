@@ -23,13 +23,22 @@ public class Config {
     public final boolean forceControlChristmasChestRendering;
     public final boolean toggleChristmasChestRendering;
     public final boolean toggleJsonCustomItemGroups;
+    public final boolean toggleBedUseInTheEnd;
+    public final boolean toggleBedUseInTheNether;
 
-    public static final Config DEFAULT = new Config(false, false, false);
+    public static final Config DEFAULT = new Config(
+            false,
+            false,
+            false,
+            false,
+            false);
 
-    public Config(boolean forceControlRenderChristmasChest, boolean toggleChristmasChestRendering, boolean toggleJsonCustomItemGroups) {
+    public Config(boolean forceControlRenderChristmasChest, boolean toggleChristmasChestRendering, boolean toggleJsonCustomItemGroups, boolean toggleBedUseInTheEnd, boolean toggleBedUseInTheNether) {
         this.forceControlChristmasChestRendering = forceControlRenderChristmasChest;
         this.toggleChristmasChestRendering = toggleChristmasChestRendering;
         this.toggleJsonCustomItemGroups = toggleJsonCustomItemGroups;
+        this.toggleBedUseInTheEnd = toggleBedUseInTheEnd;
+        this.toggleBedUseInTheNether = toggleBedUseInTheNether;
     }
 
     public static Config read() {
@@ -41,7 +50,9 @@ public class Config {
             return new Config(
                     readBool(object, "forceControlChristmasChestRendering", DEFAULT.forceControlChristmasChestRendering),
                     readBool(object, "toggleChristmasChestRendering", DEFAULT.toggleChristmasChestRendering),
-                    readBool(object, "toggleJsonCustomItemGroups", DEFAULT.toggleJsonCustomItemGroups)
+                    readBool(object, "toggleJsonCustomItemGroups", DEFAULT.toggleJsonCustomItemGroups),
+                    readBool(object, "toggleBedUseInTheEnd", DEFAULT.toggleBedUseInTheEnd),
+                    readBool(object, "toggleBedUseInTheNether", DEFAULT.toggleBedUseInTheNether)
             );
         }
         catch (FileNotFoundException e) {
@@ -79,6 +90,8 @@ public class Config {
                     .name("forceControlChristmasChestRendering").value(forceControlChristmasChestRendering)
                     .name("toggleChristmasChestRendering").value(toggleChristmasChestRendering)
                     .name("toggleJsonCustomItemGroups").value(toggleJsonCustomItemGroups)
+                    .name("toggleBedUseInTheEnd").value(toggleBedUseInTheEnd)
+                    .name("toggleBedUseInTheNether").value(toggleBedUseInTheNether)
                     .endObject();
         }
         catch (IOException e) {

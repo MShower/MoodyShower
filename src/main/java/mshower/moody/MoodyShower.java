@@ -2,6 +2,7 @@ package mshower.moody;
 
 import mshower.moody.config.Config;
 import mshower.moody.config.JsonItemGroupModifierConfig;
+import mshower.moody.utils.BedUseUtils;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -16,7 +17,9 @@ public class MoodyShower implements ModInitializer {
     @Override
     public void onInitialize() {
         JsonItemGroupModifierConfig.init();
-        LOGGER.info("Moody Shower on");
+        BedUseUtils.listenInTheEnd();
+        BedUseUtils.listenInTheNether();
+        LOGGER.info("Moody Shower loaded.");
 
     }
 }

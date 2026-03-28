@@ -34,7 +34,12 @@ public class ConfigScreenFactoryImpl implements ConfigScreenFactory<Screen> {
 
         private final ConfigEntryBuilder builder;
         private final ConfigCategory category;
-        private final BooleanListEntry forceRenderChristmasChest, toggleChristmasChestRendering, toggleJsonCustomItemGroups;
+        private final BooleanListEntry
+                forceRenderChristmasChest,
+                toggleChristmasChestRendering,
+                toggleJsonCustomItemGroups,
+                toggleBedUseInTheEnd,
+                toggleBedUseInTheNether;
 
         public ConfigEntries(ConfigEntryBuilder builder, ConfigCategory category) {
             this.builder = builder;
@@ -43,6 +48,8 @@ public class ConfigScreenFactoryImpl implements ConfigScreenFactory<Screen> {
             forceRenderChristmasChest = createBoolField("forceControlChristmasChestRendering", config.forceControlChristmasChestRendering, DEFAULT.forceControlChristmasChestRendering);
             toggleChristmasChestRendering = createBoolField("toggleChristmasChestRendering", config.toggleChristmasChestRendering, DEFAULT.toggleChristmasChestRendering);
             toggleJsonCustomItemGroups = createBoolField("toggleJsonCustomItemGroups", config.toggleJsonCustomItemGroups, DEFAULT.toggleJsonCustomItemGroups);
+            toggleBedUseInTheEnd = createBoolField("toggleBedUseInTheEnd", config.toggleBedUseInTheEnd, DEFAULT.toggleBedUseInTheEnd);
+            toggleBedUseInTheNether = createBoolField("toggleBedUseInTheNether", config.toggleBedUseInTheNether, DEFAULT.toggleBedUseInTheNether);
         }
 
         private BooleanListEntry createBoolField(String id, boolean value, boolean defaultValue) {
@@ -58,7 +65,9 @@ public class ConfigScreenFactoryImpl implements ConfigScreenFactory<Screen> {
             return new Config(
                     forceRenderChristmasChest.getValue(),
                     toggleChristmasChestRendering.getValue(),
-                    toggleJsonCustomItemGroups.getValue()
+                    toggleJsonCustomItemGroups.getValue(),
+                    toggleBedUseInTheEnd.getValue(),
+                    toggleBedUseInTheNether.getValue()
             );
         }
     }

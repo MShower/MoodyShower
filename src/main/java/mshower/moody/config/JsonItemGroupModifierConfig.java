@@ -25,8 +25,7 @@ public class JsonItemGroupModifierConfig {
                 LOGGER.error("Couldn't prepare JSON item group configs in {}", CONFIG_PATH, e);
             }
             try (Stream<Path> stream = Files.list(CONFIG_PATH)) {
-                stream
-                        .filter(Files::isRegularFile)
+                stream.filter(Files::isRegularFile)
                         .filter(p -> p.getFileName().toString().endsWith(".json"))
                         .forEach(JsonItemGroupModifierUtils::load);
             } catch (IOException e) {
