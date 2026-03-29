@@ -25,20 +25,25 @@ public class Config {
     public final boolean toggleJsonCustomItemGroups;
     public final boolean toggleBedUseInTheEnd;
     public final boolean toggleBedUseInTheNether;
+    public final boolean toggleBetterCreativeInventorySearch;
+
 
     public static final Config DEFAULT = new Config(
             false,
             false,
             false,
             false,
-            false);
+            false,
+            false
+    );
 
-    public Config(boolean forceControlRenderChristmasChest, boolean toggleChristmasChestRendering, boolean toggleJsonCustomItemGroups, boolean toggleBedUseInTheEnd, boolean toggleBedUseInTheNether) {
+    public Config(boolean forceControlRenderChristmasChest, boolean toggleChristmasChestRendering, boolean toggleJsonCustomItemGroups, boolean toggleBedUseInTheEnd, boolean toggleBedUseInTheNether, boolean toggleBetterCreativeInventorySearch) {
         this.forceControlChristmasChestRendering = forceControlRenderChristmasChest;
         this.toggleChristmasChestRendering = toggleChristmasChestRendering;
         this.toggleJsonCustomItemGroups = toggleJsonCustomItemGroups;
         this.toggleBedUseInTheEnd = toggleBedUseInTheEnd;
         this.toggleBedUseInTheNether = toggleBedUseInTheNether;
+        this.toggleBetterCreativeInventorySearch = toggleBetterCreativeInventorySearch;
     }
 
     public static Config read() {
@@ -52,7 +57,8 @@ public class Config {
                     readBool(object, "toggleChristmasChestRendering", DEFAULT.toggleChristmasChestRendering),
                     readBool(object, "toggleJsonCustomItemGroups", DEFAULT.toggleJsonCustomItemGroups),
                     readBool(object, "toggleBedUseInTheEnd", DEFAULT.toggleBedUseInTheEnd),
-                    readBool(object, "toggleBedUseInTheNether", DEFAULT.toggleBedUseInTheNether)
+                    readBool(object, "toggleBedUseInTheNether", DEFAULT.toggleBedUseInTheNether),
+                    readBool(object, "toggleBetterCreativeInventorySearch", DEFAULT.toggleBetterCreativeInventorySearch)
             );
         }
         catch (FileNotFoundException e) {
@@ -92,6 +98,7 @@ public class Config {
                     .name("toggleJsonCustomItemGroups").value(toggleJsonCustomItemGroups)
                     .name("toggleBedUseInTheEnd").value(toggleBedUseInTheEnd)
                     .name("toggleBedUseInTheNether").value(toggleBedUseInTheNether)
+                    .name("toggleBetterCreativeInventorySearch").value(toggleBetterCreativeInventorySearch)
                     .endObject();
         }
         catch (IOException e) {

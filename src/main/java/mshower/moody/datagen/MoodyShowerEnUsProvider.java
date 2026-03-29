@@ -18,9 +18,10 @@ public class MoodyShowerEnUsProvider extends FabricLanguageProvider {
     public void generateTranslations(TranslationBuilder translationBuilder) {
         translationBuilder.add("moodyShower.config.title", "Moody Shower Config");
         translationBuilder.add(fieldName("forceControlChristmasChestRendering"), "Force Control Christmas Chest Rendering");
-        translationBuilder.add(fieldName("toggleChristmasChestRendering"), "Toggle Christmas Chest Rendering Override");
-        translationBuilder.add(fieldName("toggleJsonCustomItemGroups"), "Toggle JSON Custom Item Groups (NEED RESTART MINECRAFT)");
-        translationBuilder.add(fieldName("toggleBedUseInTheEnd"), "Prevent Bed Interaction in the End");
-        translationBuilder.add(fieldName("toggleBedUseInTheNether"), "Prevent Bed Interaction in the Nether");
+        translationBuilder.add(fieldName("toggleChristmasChestRendering"), "Enable Christmas Chest Rendering Override");
+        translationBuilder.add(fieldName("toggleJsonCustomItemGroups"), "Enable JSON Custom Item Groups (NEED RESTART MINECRAFT)");
+        translationBuilder.add(fieldName("toggleBedUseInTheEnd"), "Disable Bed Interaction in the End");
+        translationBuilder.add(fieldName("toggleBedUseInTheNether"), "Disable Bed Interaction in the Nether");
+        translationBuilder.add(fieldName("toggleBetterCreativeInventorySearch"), "Enable Better Creative Inventory Search");
     }
 }

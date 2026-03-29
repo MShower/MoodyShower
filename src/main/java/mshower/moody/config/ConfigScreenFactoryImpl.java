@@ -39,7 +39,8 @@ public class ConfigScreenFactoryImpl implements ConfigScreenFactory<Screen> {
                 toggleChristmasChestRendering,
                 toggleJsonCustomItemGroups,
                 toggleBedUseInTheEnd,
-                toggleBedUseInTheNether;
+                toggleBedUseInTheNether,
+                toggleBetterCreativeInventorySearch;
 
         public ConfigEntries(ConfigEntryBuilder builder, ConfigCategory category) {
             this.builder = builder;
@@ -50,6 +51,7 @@ public class ConfigScreenFactoryImpl implements ConfigScreenFactory<Screen> {
             toggleJsonCustomItemGroups = createBoolField("toggleJsonCustomItemGroups", config.toggleJsonCustomItemGroups, DEFAULT.toggleJsonCustomItemGroups);
             toggleBedUseInTheEnd = createBoolField("toggleBedUseInTheEnd", config.toggleBedUseInTheEnd, DEFAULT.toggleBedUseInTheEnd);
             toggleBedUseInTheNether = createBoolField("toggleBedUseInTheNether", config.toggleBedUseInTheNether, DEFAULT.toggleBedUseInTheNether);
+            toggleBetterCreativeInventorySearch = createBoolField("toggleBetterCreativeInventorySearch", config.toggleBetterCreativeInventorySearch, DEFAULT.toggleBetterCreativeInventorySearch);
         }
 
         private BooleanListEntry createBoolField(String id, boolean value, boolean defaultValue) {
@@ -67,7 +69,8 @@ public class ConfigScreenFactoryImpl implements ConfigScreenFactory<Screen> {
                     toggleChristmasChestRendering.getValue(),
                     toggleJsonCustomItemGroups.getValue(),
                     toggleBedUseInTheEnd.getValue(),
-                    toggleBedUseInTheNether.getValue()
+                    toggleBedUseInTheNether.getValue(),
+                    toggleBetterCreativeInventorySearch.getValue()
             );
         }
     }

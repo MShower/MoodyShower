@@ -22,5 +22,6 @@ public class MoodyShowerZhCnProvider extends FabricLanguageProvider {
         translationBuilder.add(fieldName("toggleJsonCustomItemGroups"), "启用 JSON 自定义物品标签页（需要重启Minecraft）");
         translationBuilder.add(fieldName("toggleBedUseInTheEnd"), "禁止在末地使用床");
         translationBuilder.add(fieldName("toggleBedUseInTheNether"), "禁止在下界使用床");
+        translationBuilder.add(fieldName("toggleBetterCreativeInventorySearch"), "启用增强创造模式物品搜索");
     }
 }

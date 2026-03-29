@@ -11,6 +11,8 @@
         "requireAnnotations": true
     },
     "client": [
-        "ChristmasChestRendererMixin"
+        "ChristmasChestRendererMixin",
+        "CreativeInventorySearchMixin",
+        "HandledScreenAccessorMixin"
     ]
 }
