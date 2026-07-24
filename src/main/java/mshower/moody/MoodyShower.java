@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class MoodyShower implements ModInitializer {
     public static final String MOD_ID = "moody-shower";
+    public static final String ORG_ID = "mshower";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static Config config = Config.read();

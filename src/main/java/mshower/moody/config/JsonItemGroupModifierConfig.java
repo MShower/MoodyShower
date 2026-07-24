@@ -14,6 +14,7 @@ public class JsonItemGroupModifierConfig {
 
     private static final Path CONFIG_PATH = FabricLoader.getInstance()
             .getConfigDir()
+            .resolve(ORG_ID)
             .resolve(MOD_ID)
             .resolve("item-groups");
 

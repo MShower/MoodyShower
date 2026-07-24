@@ -8,14 +8,16 @@ import com.google.gson.stream.JsonWriter;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.*;
+import java.nio.file.Files;
 
-import static mshower.moody.MoodyShower.MOD_ID;
+import static mshower.moody.MoodyShower.*;
 import static mshower.moody.MoodyShower.LOGGER;
 
 public class Config {
     private static final File CONFIG_FILE =
             FabricLoader.getInstance()
                     .getConfigDir()
+                    .resolve(ORG_ID)
                     .resolve(MOD_ID)
                     .resolve(MOD_ID + ".json")
                     .toFile();
@@ -47,6 +49,10 @@ public class Config {
     }
 
     public static Config read() {
+        if (!CONFIG_FILE.exists()) {
+            DEFAULT.write();
+            return DEFAULT;
+        }
         try (FileReader reader = new FileReader(CONFIG_FILE)) {
             JsonElement element = JsonParser.parseReader(reader);
             if (!element.isJsonObject()) return DEFAULT;
@@ -60,9 +66,6 @@ public class Config {
                     readBool(object, "toggleBedUseInTheNether", DEFAULT.toggleBedUseInTheNether),
                     readBool(object, "toggleBetterCreativeInventorySearch", DEFAULT.toggleBetterCreativeInventorySearch)
             );
-        }
-        catch (FileNotFoundException e) {
-            return DEFAULT;
         }
         catch (IOException | JsonIOException e) {
             LOGGER.error("Couldn't read {}, using default settings instead", CONFIG_FILE, e);
@@ -87,21 +90,25 @@ public class Config {
         }
     }
     public void write() {
-        try (FileWriter fileWriter = new FileWriter(CONFIG_FILE);
-             JsonWriter jsonWriter = new JsonWriter(fileWriter)
-        ) {
-            jsonWriter.setIndent("  ");
-            jsonWriter
-                    .beginObject()
-                    .name("forceControlChristmasChestRendering").value(forceControlChristmasChestRendering)
-                    .name("toggleChristmasChestRendering").value(toggleChristmasChestRendering)
-                    .name("toggleJsonCustomItemGroups").value(toggleJsonCustomItemGroups)
-                    .name("toggleBedUseInTheEnd").value(toggleBedUseInTheEnd)
-                    .name("toggleBedUseInTheNether").value(toggleBedUseInTheNether)
-                    .name("toggleBetterCreativeInventorySearch").value(toggleBetterCreativeInventorySearch)
-                    .endObject();
-        }
-        catch (IOException e) {
+        try {
+            Files.createDirectories(CONFIG_FILE.toPath().getParent());
+            try (FileWriter fileWriter = new FileWriter(CONFIG_FILE);
+                 JsonWriter jsonWriter = new JsonWriter(fileWriter)
+            ) {
+                jsonWriter.setIndent("  ");
+                jsonWriter
+                        .beginObject()
+                        .name("forceControlChristmasChestRendering").value(forceControlChristmasChestRendering)
+                        .name("toggleChristmasChestRendering").value(toggleChristmasChestRendering)
+                        .name("toggleJsonCustomItemGroups").value(toggleJsonCustomItemGroups)
+                        .name("toggleBedUseInTheEnd").value(toggleBedUseInTheEnd)
+                        .name("toggleBedUseInTheNether").value(toggleBedUseInTheNether)
+                        .name("toggleBetterCreativeInventorySearch").value(toggleBetterCreativeInventorySearch)
+                        .endObject();
+            } catch (IOException e) {
+                LOGGER.error("Couldn't write settings to {}", CONFIG_FILE, e);
+            }
+        } catch (IOException e) {
             LOGGER.error("Couldn't write settings to {}", CONFIG_FILE, e);
         }
     }
