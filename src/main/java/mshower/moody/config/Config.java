@@ -105,8 +105,6 @@ public class Config {
                         .name("toggleBedUseInTheNether").value(toggleBedUseInTheNether)
                         .name("toggleBetterCreativeInventorySearch").value(toggleBetterCreativeInventorySearch)
                         .endObject();
-            } catch (IOException e) {
-                LOGGER.error("Couldn't write settings to {}", CONFIG_FILE, e);
             }
         } catch (IOException e) {
             LOGGER.error("Couldn't write settings to {}", CONFIG_FILE, e);
